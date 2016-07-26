@@ -32,7 +32,6 @@ sudo cp /vagrant/squid-deb-proxy.conf /etc/squid-deb-proxy/squid-deb-proxy.conf
 sudo restart squid-deb-proxy
 sudo apt-get install -y squid-deb-proxy-client
 sudo apt-get install -y language-pack-en
-
 SQUID
 
 Vagrant.configure(2) do |config|
@@ -43,7 +42,7 @@ Vagrant.configure(2) do |config|
 				v.cpus = 2
 				v.memory = 2048
 			end
-        docker.vm.network "private_network", ip: "10.154.128.254"
+        squid.vm.network "private_network", ip: "10.154.128.254"
 		squid.vm.provision :shell, inline: $squid
     end
 end
