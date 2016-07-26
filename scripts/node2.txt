@@ -1,0 +1,43 @@
+node2
+
+###Changing default .250 IP to .104 and updating host file and setting hostname
+sed -i -e 's/250/104/g' /etc/systemd/network/*
+sed -i -e 's/photon-template-minimal/node2/g' /etc/hosts
+sed -i -e 's/photon-template-minimal/node2/g' /etc/hostname
+reboot
+
+sed -i -e 's/# End \/etc\/systemd\/scripts\/iptables//g' /etc/systemd/scripts/iptables
+echo "# Allowing Docker remote access" >> /etc/systemd/scripts/iptables
+echo iptables -t filter -A INPUT -s 10.154.128.0/24 -p tcp --dport 2375 -j ACCEPT >> /etc/systemd/scripts/iptables
+echo iptables -t filter -A INPUT -s 10.154.128.0/24 -p tcp --dport 2376 -j ACCEPT >> /etc/systemd/scripts/iptables
+echo iptables -t filter -A INPUT -s 10.154.128.0/24 -p icmp -j ACCEPT >> /etc/systemd/scripts/iptables
+echo "# End /etc/systemd/scripts/iptables" >> /etc/systemd/scripts/iptables
+systemctl restart iptables
+
+# Adding proxy
+export https_proxy=http://10.154.128.254:8000/
+export http_proxy=http://10.154.128.254:8000/
+
+#Upgrading docker
+tdnf install docker -y
+
+#Setting up proxy stuff for docker
+
+mkdir /etc/systemd/system/docker.service.d
+touch /etc/systemd/system/docker.service.d/http-proxy.conf
+tee /etc/systemd/system/docker.service.d/http-proxy.conf <<COW
+[Service]
+Environment="HTTP_PROXY=http://10.154.128.254:8000/"
+Environment="HTTPS_PROXY=http://10.154.128.254:8000/"
+COW
+
+
+###Remote access enable (docker)
+
+echo DOCKER_OPTS="$DOCKER_OPTS --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375" >/etc/default/docker
+systemctl enable docker
+systemctl daemon-reload && systemctl restart docker
+
+docker run -d --restart=always --name=node2 swarm join --advertise=10.154.128.104:2375 zk://10.154.128.101,10.154.128.102/swarm
+
+

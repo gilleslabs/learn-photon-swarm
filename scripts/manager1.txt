@@ -1,0 +1,114 @@
+Manager1
+
+###Changing default .250 IP to .101 and updating host file and setting hostname
+sed -i -e 's/250/101/g' /etc/systemd/network/*
+sed -i -e 's/photon-template-minimal/manager1/g' /etc/hosts
+sed -i -e 's/photon-template-minimal/manager1/g' /etc/hostname
+reboot
+
+
+#First doing the iptables stuff
+
+sed -i -e 's/# End \/etc\/systemd\/scripts\/iptables//g' /etc/systemd/scripts/iptables
+echo "# Allowing Docker remote access" >> /etc/systemd/scripts/iptables
+echo iptables -t filter -A INPUT -s 10.154.128.0/24 -p tcp --dport 2375 -j ACCEPT >> /etc/systemd/scripts/iptables
+echo iptables -t filter -A INPUT -s 10.154.128.0/24 -p tcp --dport 2376 -j ACCEPT >> /etc/systemd/scripts/iptables
+echo "# Allowing Zookeeper" /etc/systemd/scripts/iptables
+echo iptables -t filter -A INPUT  -p tcp --dport 2888 -j ACCEPT >> /etc/systemd/scripts/iptables
+echo iptables -t filter -A INPUT  -p tcp --dport 3888 -j ACCEPT >> /etc/systemd/scripts/iptables
+echo iptables -t filter -A INPUT  -p tcp --dport 2181 -j ACCEPT >> /etc/systemd/scripts/iptables
+echo iptables -t filter -A INPUT -s 10.154.128.0/24 -p icmp -j ACCEPT >> /etc/systemd/scripts/iptables
+echo iptables -t filter -A INPUT -s 10.154.128.0/24 -p udp --dport 53 -j ACCEPT >> /etc/systemd/scripts/iptables
+echo "# End /etc/systemd/scripts/iptables" >> /etc/systemd/scripts/iptables
+systemctl restart iptables
+
+# Adding proxy
+export https_proxy=http://10.154.128.254:8000/
+export http_proxy=http://10.154.128.254:8000/
+
+#Upgrading docker
+
+tdnf install docker -y
+
+#Setting up proxy stuff for docker
+
+mkdir /etc/systemd/system/docker.service.d
+touch /etc/systemd/system/docker.service.d/http-proxy.conf
+tee /etc/systemd/system/docker.service.d/http-proxy.conf <<COW
+[Service]
+Environment="HTTP_PROXY=http://10.154.128.254:8000/"
+Environment="HTTPS_PROXY=http://10.154.128.254:8000/"
+COW
+
+#Start docker and enable it to be started at boot time
+systemctl start docker
+systemctl enable docker
+
+###Remote access enable (docker)
+
+echo DOCKER_OPTS="$DOCKER_OPTS --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375" > /etc/default/docker
+systemctl restart docker
+
+tdnf install wget -y
+tdnf install tar -y
+
+#### Setting up zookeeper (to be studied tdnf installation of zookeeper instead)
+
+###OpenJDK not installed by default
+
+tdnf install openjdk -y
+
+
+
+mkdir -p /opt/swarm && cd /opt/swarm && wget http://apache.mivzakim.net/zookeeper/stable/zookeeper-3.4.8.tar.gz
+tar -xf zookeeper-3.4.8.tar.gz && mv zookeeper-3.4.8 zookeeper
+mkdir /var/lib/zookeeper
+
+tee /opt/swarm/zookeeper/conf/zoo.cfg<<CAT
+tickTime=2000
+initLimit=10
+syncLimit=5
+dataDir=/var/lib/zookeeper
+clientPort=2181
+server.1=10.154.128.101:2888:3888
+server.2=10.154.128.102:2888:3888
+CAT
+
+echo 1 > /var/lib/zookeeper/myid
+
+tee /etc/systemd/system/zookeeper.service<<DOG
+[Unit]
+Description=Apache ZooKeeper
+After=network.target
+ 
+[Service]
+Environment="JAVA_HOME=/var/opt/OpenJDK-1.8.0.92-bin"
+WorkingDirectory=/opt/swarm/zookeeper
+ExecStart=/bin/bash -c "/opt/swarm/zookeeper/bin/zkServer.sh start-foreground"
+Restart=on-failure
+RestartSec=20
+User=root
+Group=root
+ 
+[Install]
+WantedBy=multi-user.target
+DOG
+
+tdnf install netcat -y
+systemctl enable zookeeper
+systemctl start zookeeper
+
+
+##### After zookeeper ok on both hosts
+
+##### Setting up swarm
+docker run -d --name=manager1 -p 8888:2375 swarm manage --replication --advertise 10.154.128.101:8888 zk://10.154.128.101,10.154.128.102/swarm
+
+
+##### Setting up DNS only for Manager1 
+docker run -d --name=dns -p 53:53/udp --link manager1:swarm ahmet/wagl wagl --swarm tcp://swarm:2375
+
+
+
+
+
