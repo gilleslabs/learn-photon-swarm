@@ -24,7 +24,7 @@
 
 $squid = <<SQUID
 
-	################     Installing Squid            ###################
+################     Installing Squid            ###################
 
 sudo apt-get update
 sudo apt-get apt-get install -y squid-deb-proxy avahi-utils
@@ -36,7 +36,7 @@ SQUID
 
 Vagrant.configure(2) do |config|
 
-	config.vm.define "squid" do |docker|
+	config.vm.define "squid" do |squid|
         squid.vm.box = "ubuntu/trusty64"
 			config.vm.provider "virtualbox" do |v|
 				v.cpus = 2
@@ -44,5 +44,5 @@ Vagrant.configure(2) do |config|
 			end
         squid.vm.network "private_network", ip: "10.154.128.254"
 		squid.vm.provision :shell, inline: $squid
-    end
+	end
 end
