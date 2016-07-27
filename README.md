@@ -19,7 +19,9 @@ The following is an overview of the ready-to-go VMs:
 - [RoyalTS] (https://www.royalapplications.com/ts/win/features) - Optional
 - Your workstation must have a direct internet connection (not via proxy - if your internet connection is behind a proxy, please check Virtualbox and Vagrant documentation to update Vagrantfile)
 
-All VMs are provisioned using ubuntu/trusty64 (Ubuntu 14.04 Trusty Tahr) 
+**squid** VM provisioned using ubuntu/trusty64 (Ubuntu 14.04 Trusty Tahr)
+All other VM are provisioned based on [VMWare Photon 1.0] (https://vmware.github.io/photon/)  
+
 
 ## VMs details
 
@@ -87,6 +89,7 @@ Sometimes ssh connections fail, just ping the target server and this should fix 
 ## Credits
 
 This project was totally inspired from [Install and Configure a Swarm Cluster with DNS Service on PhotonOS](https://github.com/vmware/photon/wiki/Install-and-Configure-a-Swarm-Cluster-with-DNS-Service-on-PhotonOS)
+
 Packer photon templates has been customized from [Photon Packer Templates] (https://github.com/vmware/photon-packer-templates)
 
 ## MIT
