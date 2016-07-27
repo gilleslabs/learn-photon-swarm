@@ -65,7 +65,7 @@ As a consequence we need first to create a working vagrant box (**this as to be 
 
 3. When build is completed import the box with below command:
 	```
-	vagrant box add photon
+	vagrant box add photon photon-vagrant-virtualbox.box
 	```
 
 #### Launching the whole environment:
