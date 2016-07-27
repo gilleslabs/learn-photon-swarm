@@ -2,7 +2,7 @@
 <RTSZDocument>
   <RoyalDocument>
     <ID>8e49ed5e-1e33-4356-8f9d-34b746615a1d</ID>
-    <Modified>07/26/2016 22:10:49</Modified>
+    <Modified>07/27/2016 15:11:51</Modified>
     <ModifiedBy>GILLES-ROG\gille</ModifiedBy>
     <Name>Photon Swarm DNS</Name>
     <Created>07/26/2016 14:20:06</Created>
@@ -26,20 +26,9 @@
     <IsExpanded>False</IsExpanded>
     <ParentID>8e49ed5e-1e33-4356-8f9d-34b746615a1d</ParentID>
   </RoyalTrash>
-  <RoyalFolder>
-    <ID>fcdb6d02-208d-4aaa-ab5e-99e42c184480</ID>
-    <Modified>07/26/2016 14:20:06</Modified>
-    <ModifiedBy>GILLES-ROG\gille</ModifiedBy>
-    <Name>Connections</Name>
-    <Created>07/26/2016 14:20:06</Created>
-    <CreatedBy>GILLES-ROG\gille</CreatedBy>
-    <PositionNr>4</PositionNr>
-    <IsExpanded>True</IsExpanded>
-    <ParentID>8e49ed5e-1e33-4356-8f9d-34b746615a1d</ParentID>
-  </RoyalFolder>
   <RoyalSSHConnection>
     <ID>3e4701e4-a898-4a8c-bcaf-8047b4b6541d</ID>
-    <Modified>07/26/2016 22:12:05</Modified>
+    <Modified>07/27/2016 15:11:51</Modified>
     <ModifiedBy>GILLES-ROG\gille</ModifiedBy>
     <Name>Template</Name>
     <Created>07/26/2016 14:20:04</Created>
@@ -55,18 +44,29 @@
     <CredentialPassword>NNte+21buqFWsg+dxIT9zgR1OeK/65uZaxS6TsWmsLGefPrhR1ZFAzgGjQ0SdV2bSvEuTnZhx7qBe3AYG50hGNILgHvw8fzMCrlTclTkCVw=</CredentialPassword>
     <CredentialUsername>root</CredentialUsername>
     <CustomImageList>{}</CustomImageList>
-    <ParentID>fcdb6d02-208d-4aaa-ab5e-99e42c184480</ParentID>
+    <ParentID>ed0bf7c9-6d10-4b8a-abbf-1570bcda5e48</ParentID>
     <URI>10.154.128.250</URI>
     <CredentialName />
   </RoyalSSHConnection>
+  <RoyalFolder>
+    <ID>fcdb6d02-208d-4aaa-ab5e-99e42c184480</ID>
+    <Modified>07/26/2016 14:20:06</Modified>
+    <ModifiedBy>GILLES-ROG\gille</ModifiedBy>
+    <Name>Connections</Name>
+    <Created>07/26/2016 14:20:06</Created>
+    <CreatedBy>GILLES-ROG\gille</CreatedBy>
+    <PositionNr>4</PositionNr>
+    <IsExpanded>True</IsExpanded>
+    <ParentID>8e49ed5e-1e33-4356-8f9d-34b746615a1d</ParentID>
+  </RoyalFolder>
   <RoyalSSHConnection>
     <ID>9e1c6389-c0ac-4e82-898b-135894fda359</ID>
-    <Modified>07/26/2016 17:02:21</Modified>
+    <Modified>07/27/2016 15:12:10</Modified>
     <ModifiedBy>GILLES-ROG\gille</ModifiedBy>
     <Name>Manager1</Name>
     <Created>07/26/2016 14:21:50</Created>
     <CreatedBy>GILLES-ROG\gille</CreatedBy>
-    <PositionNr>4</PositionNr>
+    <PositionNr>2</PositionNr>
     <IsConnectionTemplate>False</IsConnectionTemplate>
     <ColorCursorColour>10</ColorCursorColour>
     <ColorDefaultBackground>#000000</ColorDefaultBackground>
@@ -74,7 +74,7 @@
     <ConnectionType>ssh;SSH Connection</ConnectionType>
     <CredentialId>00000000-0000-0000-0000-000000000000</CredentialId>
     <CredentialMode>2</CredentialMode>
-    <CredentialPassword>jKXlZVH7C9QWgXaL35oBpuxQ4UbF9f6CV1zniXVjRgIKVuPorO1poEKKACSv1v/Us5yOzfB35ZjJCMKV230qkkCLgqe9CZTVH2rR583HXtM=</CredentialPassword>
+    <CredentialPassword>hXMU4VEbJwk312HMSgXUOTq10duj6SuGYJ+J7wUlH/HiaPU59ehNgnZ0jpvMQWCkd3wJGlWWOGyv88F5LOthchXFQlftWKBhaddGqPW0CYo=</CredentialPassword>
     <CredentialUsername>root</CredentialUsername>
     <CustomImageList>{}</CustomImageList>
     <ExternalHeight>653</ExternalHeight>
@@ -85,13 +85,40 @@
     <ExternalWidth>1346</ExternalWidth>
     <ParentID>fcdb6d02-208d-4aaa-ab5e-99e42c184480</ParentID>
     <URI>10.154.128.101</URI>
+    <CredentialName />
+    <IsTelnetConnection>False</IsTelnetConnection>
+    <IsSerialPortConnection>False</IsSerialPortConnection>
   </RoyalSSHConnection>
   <RoyalSSHConnection>
     <ID>c5d622b0-21bb-4691-9b29-ec24c0f8a183</ID>
-    <Modified>07/26/2016 17:02:44</Modified>
+    <Modified>07/27/2016 15:12:25</Modified>
     <ModifiedBy>GILLES-ROG\gille</ModifiedBy>
     <Name>Manager2</Name>
     <Created>07/26/2016 14:23:13</Created>
+    <CreatedBy>GILLES-ROG\gille</CreatedBy>
+    <PositionNr>4</PositionNr>
+    <IsConnectionTemplate>False</IsConnectionTemplate>
+    <ColorCursorColour>10</ColorCursorColour>
+    <ColorDefaultBackground>#000000</ColorDefaultBackground>
+    <ColorDefaultForeground>#BBBBBB</ColorDefaultForeground>
+    <ConnectionType>ssh;SSH Connection</ConnectionType>
+    <CredentialId>00000000-0000-0000-0000-000000000000</CredentialId>
+    <CredentialMode>2</CredentialMode>
+    <CredentialPassword>2BZz+FrLw8VvpZ3o8B90LXgxMCS4tgCpBVL4G3OTwVsbICP/g9rzxkKO3CoCJT1yMYidbittC4Z+iU3Hq8WdoewogfbaXOCNkSYYQbYMpjo=</CredentialPassword>
+    <CredentialUsername>root</CredentialUsername>
+    <CustomImageList>{}</CustomImageList>
+    <ParentID>fcdb6d02-208d-4aaa-ab5e-99e42c184480</ParentID>
+    <URI>10.154.128.102</URI>
+    <CredentialName />
+    <IsTelnetConnection>False</IsTelnetConnection>
+    <IsSerialPortConnection>False</IsSerialPortConnection>
+  </RoyalSSHConnection>
+  <RoyalSSHConnection>
+    <ID>b81962ca-8c12-4a92-bc9c-33ce0f147fcf</ID>
+    <Modified>07/27/2016 15:12:42</Modified>
+    <ModifiedBy>GILLES-ROG\gille</ModifiedBy>
+    <Name>Node1</Name>
+    <Created>07/26/2016 14:24:57</Created>
     <CreatedBy>GILLES-ROG\gille</CreatedBy>
     <PositionNr>6</PositionNr>
     <IsConnectionTemplate>False</IsConnectionTemplate>
@@ -101,18 +128,21 @@
     <ConnectionType>ssh;SSH Connection</ConnectionType>
     <CredentialId>00000000-0000-0000-0000-000000000000</CredentialId>
     <CredentialMode>2</CredentialMode>
-    <CredentialPassword>faMhdPewv/wXf6Aci2lrDihxkBycI2N2whNh8Sjr7IXha/OBHWmtYG11EvqAH0JrHO5o9Zw5j2tO48VlpKaBm/6dxHiAjx37NvHvFgZpYG0=</CredentialPassword>
+    <CredentialPassword>auZeUx1twCsRm7mMPF5VIZBP9xN0m7/3/GxxNCAcNdMknt4lTxuIfT+iLpsnvpIB7y8M+AmkcRzWArbIPxdmg8eofKuwUb9rZnAu8JEznAs=</CredentialPassword>
     <CredentialUsername>root</CredentialUsername>
     <CustomImageList>{}</CustomImageList>
     <ParentID>fcdb6d02-208d-4aaa-ab5e-99e42c184480</ParentID>
-    <URI>10.154.128.102</URI>
+    <URI>10.154.128.103</URI>
+    <CredentialName />
+    <IsTelnetConnection>False</IsTelnetConnection>
+    <IsSerialPortConnection>False</IsSerialPortConnection>
   </RoyalSSHConnection>
   <RoyalSSHConnection>
-    <ID>b81962ca-8c12-4a92-bc9c-33ce0f147fcf</ID>
-    <Modified>07/26/2016 17:03:22</Modified>
+    <ID>837f11de-a9dc-4335-ac03-d2a0072bc7b0</ID>
+    <Modified>07/27/2016 15:12:57</Modified>
     <ModifiedBy>GILLES-ROG\gille</ModifiedBy>
-    <Name>Node1</Name>
-    <Created>07/26/2016 14:24:57</Created>
+    <Name>Node2</Name>
+    <Created>07/26/2016 14:33:10</Created>
     <CreatedBy>GILLES-ROG\gille</CreatedBy>
     <PositionNr>8</PositionNr>
     <IsConnectionTemplate>False</IsConnectionTemplate>
@@ -122,32 +152,14 @@
     <ConnectionType>ssh;SSH Connection</ConnectionType>
     <CredentialId>00000000-0000-0000-0000-000000000000</CredentialId>
     <CredentialMode>2</CredentialMode>
-    <CredentialPassword>J+b8dAdjErufhdH5Zhz5Hp8H82OIMkMZEpARCM/qnDPLrSoBTi4ngM4lnyOkQvrSdaKUpLmK6Y08Sarfy9RoHY7AQTGueW5inD0z8qMqBpk=</CredentialPassword>
-    <CredentialUsername>root</CredentialUsername>
-    <CustomImageList>{}</CustomImageList>
-    <ParentID>fcdb6d02-208d-4aaa-ab5e-99e42c184480</ParentID>
-    <URI>10.154.128.103</URI>
-  </RoyalSSHConnection>
-  <RoyalSSHConnection>
-    <ID>837f11de-a9dc-4335-ac03-d2a0072bc7b0</ID>
-    <Modified>07/26/2016 17:03:51</Modified>
-    <ModifiedBy>GILLES-ROG\gille</ModifiedBy>
-    <Name>Node2</Name>
-    <Created>07/26/2016 14:33:10</Created>
-    <CreatedBy>GILLES-ROG\gille</CreatedBy>
-    <PositionNr>10</PositionNr>
-    <IsConnectionTemplate>False</IsConnectionTemplate>
-    <ColorCursorColour>10</ColorCursorColour>
-    <ColorDefaultBackground>#000000</ColorDefaultBackground>
-    <ColorDefaultForeground>#BBBBBB</ColorDefaultForeground>
-    <ConnectionType>ssh;SSH Connection</ConnectionType>
-    <CredentialId>00000000-0000-0000-0000-000000000000</CredentialId>
-    <CredentialMode>2</CredentialMode>
-    <CredentialPassword>FO39pgwjeQEI9PrOkm/T0IhOi+TvixVgYPYpNUprV9fao5t9fP2OJOPMl6E195fo8pcSUziPAkhduH9kTIVKtc+dveLxhyshnE6+9R7vHZY=</CredentialPassword>
+    <CredentialPassword>LXKtbDlQjy0nuywdNt9vO9ShF6FTQrcYMJuo5hnjaB+hHv9rIJHvRL760JPvduR2Wo58kaCpieiuHIT1Vm7lQdvVWtIKeCPNN6pbF/sdqnw=</CredentialPassword>
     <CredentialUsername>root</CredentialUsername>
     <CustomImageList>{}</CustomImageList>
     <ParentID>fcdb6d02-208d-4aaa-ab5e-99e42c184480</ParentID>
     <URI>10.154.128.104</URI>
+    <CredentialName />
+    <IsTelnetConnection>False</IsTelnetConnection>
+    <IsSerialPortConnection>False</IsSerialPortConnection>
   </RoyalSSHConnection>
   <RoyalFolder>
     <ID>a440681e-6f1a-480e-823c-173050224c51</ID>

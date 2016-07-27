@@ -1,5 +1,8 @@
 # vagrant stuff
 /.vagrant
 *.backup
+*.tar.gz
+*.box
+packer_cache
 
 

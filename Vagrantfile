@@ -14,28 +14,10 @@
 
 
 
-######################################################################################################
-#                                                                                                    #
-#      Setup of $squid variable which will be used for squid VM Shell inline provisioning            #
-#                                                                                                    #
-######################################################################################################
-
-
-
-$squid = <<SQUID
-
-################     Installing Squid            ###################
-
-sudo apt-get update
-sudo apt-get apt-get install -y squid-deb-proxy avahi-utils
-sudo cp /vagrant/squid-deb-proxy.conf /etc/squid-deb-proxy/squid-deb-proxy.conf
-sudo restart squid-deb-proxy
-sudo apt-get install -y squid-deb-proxy-client
-sudo apt-get install -y language-pack-en
-SQUID
-
 Vagrant.configure(2) do |config|
 
+	##### Squid VM provisioning ######
+	
 	config.vm.define "squid" do |squid|
         squid.vm.box = "ubuntu/trusty64"
 			config.vm.provider "virtualbox" do |v|
@@ -43,6 +25,62 @@ Vagrant.configure(2) do |config|
 				v.memory = 2048
 			end
         squid.vm.network "private_network", ip: "10.154.128.254"
-		squid.vm.provision :shell, inline: $squid
+		squid.vm.provision :shell, path: "./scripts/squid.sh"
+	end
+	
+	##### Manager1 VM provisioning ######
+	
+	config.vm.define "manager1" do |manager1|
+        manager1.vm.box = "photon"
+		manager1.vm.synced_folder ".", "/vagrant", disabled: true
+			config.vm.provider "virtualbox" do |v|
+				v.cpus = 2
+				v.memory = 2048
+			end
+		manager1.vm.network "private_network", ip: "10.154.128.101"
+		manager1.vm.provision "shell", path: "./scripts/manager1.sh" 
+		
+	end
+	
+	##### Manager2 VM provisioning ######
+	
+	config.vm.define "manager2" do |manager2|
+        manager2.vm.box = "photon"
+		manager2.vm.synced_folder ".", "/vagrant", disabled: true
+			config.vm.provider "virtualbox" do |v|
+				v.cpus = 2
+				v.memory = 2048
+			end
+		manager2.vm.network "private_network", ip: "10.154.128.102"
+		manager2.vm.provision "shell", path: "./scripts/manager2.sh" 
+		
+	end
+
+	##### Node1 VM provisioning ######
+	
+	config.vm.define "node1" do |node1|
+        node1.vm.box = "photon"
+		node1.vm.synced_folder ".", "/vagrant", disabled: true
+			config.vm.provider "virtualbox" do |v|
+				v.cpus = 2
+				v.memory = 2048
+			end
+		node1.vm.network "private_network", ip: "10.154.128.103"
+		node1.vm.provision "shell", path: "./scripts/node1.sh" 
+		
+	end
+	
+	##### Node2 VM provisioning ######
+	
+	config.vm.define "node2" do |node2|
+        node2.vm.box = "photon"
+		node2.vm.synced_folder ".", "/vagrant", disabled: true
+			config.vm.provider "virtualbox" do |v|
+				v.cpus = 2
+				v.memory = 2048
+			end
+		node2.vm.network "private_network", ip: "10.154.128.104"
+		node2.vm.provision "shell", path: "./scripts/node2.sh" 
+		
 	end
 end
