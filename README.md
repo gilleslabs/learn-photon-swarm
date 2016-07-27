@@ -17,9 +17,9 @@ The following is an overview of the ready-to-go VMs:
 - [Photon-vbguest plugin] (https://github.com/vmware/vagrant-guests-photon). Tested on v1.0.3
 - [Packer] (https://www.packer.io/) - Tested with version in photon-packer-template folder
 - [RoyalTS] (https://www.royalapplications.com/ts/win/features) - Optional
-- An internet direct connection (not via proxy - if your internet connection is behind a proxy, please check Virtualbox and Vagrant documentation to update Vagrantfile)
+- Your workstation must have a direct internet connection (not via proxy - if your internet connection is behind a proxy, please check Virtualbox and Vagrant documentation to update Vagrantfile)
 
-All VMs are provisioned using ubuntu/trusty64 (Ubuntu 14.04 Trusty Tahr) or opentable/win-2012r2-standard-amd64-nocm (Windows 2012R2) from [atlas.hashicorp.com] (https://atlas.hashicorp.com/ubuntu/boxes/trusty64) images, thus your workstation must have a direct internet access. 
+All VMs are provisioned using ubuntu/trusty64 (Ubuntu 14.04 Trusty Tahr) 
 
 ## VMs details
 
@@ -82,7 +82,7 @@ As a consequence we need first to create a working vagrant box (**this as to be 
 
 ## Known issues
 
-Sometimes Putty connections fail, just ping the target server and this should fix the issue.
+Sometimes ssh connections fail, just ping the target server and this should fix the issue.
 
 ## Credits
 
