@@ -2,7 +2,7 @@
 <RTSZDocument>
   <RoyalDocument>
     <ID>8e49ed5e-1e33-4356-8f9d-34b746615a1d</ID>
-    <Modified>07/27/2016 15:11:51</Modified>
+    <Modified>07/28/2016 16:37:55</Modified>
     <ModifiedBy>GILLES-ROG\gille</ModifiedBy>
     <Name>Photon Swarm DNS</Name>
     <Created>07/26/2016 14:20:06</Created>
@@ -46,7 +46,6 @@
     <CustomImageList>{}</CustomImageList>
     <ParentID>ed0bf7c9-6d10-4b8a-abbf-1570bcda5e48</ParentID>
     <URI>10.154.128.250</URI>
-    <CredentialName />
   </RoyalSSHConnection>
   <RoyalFolder>
     <ID>fcdb6d02-208d-4aaa-ab5e-99e42c184480</ID>
@@ -83,11 +82,10 @@
     <ExternalScreen>1</ExternalScreen>
     <ExternalTop>197</ExternalTop>
     <ExternalWidth>1346</ExternalWidth>
+    <IsSerialPortConnection>False</IsSerialPortConnection>
+    <IsTelnetConnection>False</IsTelnetConnection>
     <ParentID>fcdb6d02-208d-4aaa-ab5e-99e42c184480</ParentID>
     <URI>10.154.128.101</URI>
-    <CredentialName />
-    <IsTelnetConnection>False</IsTelnetConnection>
-    <IsSerialPortConnection>False</IsSerialPortConnection>
   </RoyalSSHConnection>
   <RoyalSSHConnection>
     <ID>c5d622b0-21bb-4691-9b29-ec24c0f8a183</ID>
@@ -107,11 +105,10 @@
     <CredentialPassword>2BZz+FrLw8VvpZ3o8B90LXgxMCS4tgCpBVL4G3OTwVsbICP/g9rzxkKO3CoCJT1yMYidbittC4Z+iU3Hq8WdoewogfbaXOCNkSYYQbYMpjo=</CredentialPassword>
     <CredentialUsername>root</CredentialUsername>
     <CustomImageList>{}</CustomImageList>
+    <IsSerialPortConnection>False</IsSerialPortConnection>
+    <IsTelnetConnection>False</IsTelnetConnection>
     <ParentID>fcdb6d02-208d-4aaa-ab5e-99e42c184480</ParentID>
     <URI>10.154.128.102</URI>
-    <CredentialName />
-    <IsTelnetConnection>False</IsTelnetConnection>
-    <IsSerialPortConnection>False</IsSerialPortConnection>
   </RoyalSSHConnection>
   <RoyalSSHConnection>
     <ID>b81962ca-8c12-4a92-bc9c-33ce0f147fcf</ID>
@@ -131,11 +128,10 @@
     <CredentialPassword>auZeUx1twCsRm7mMPF5VIZBP9xN0m7/3/GxxNCAcNdMknt4lTxuIfT+iLpsnvpIB7y8M+AmkcRzWArbIPxdmg8eofKuwUb9rZnAu8JEznAs=</CredentialPassword>
     <CredentialUsername>root</CredentialUsername>
     <CustomImageList>{}</CustomImageList>
+    <IsSerialPortConnection>False</IsSerialPortConnection>
+    <IsTelnetConnection>False</IsTelnetConnection>
     <ParentID>fcdb6d02-208d-4aaa-ab5e-99e42c184480</ParentID>
     <URI>10.154.128.103</URI>
-    <CredentialName />
-    <IsTelnetConnection>False</IsTelnetConnection>
-    <IsSerialPortConnection>False</IsSerialPortConnection>
   </RoyalSSHConnection>
   <RoyalSSHConnection>
     <ID>837f11de-a9dc-4335-ac03-d2a0072bc7b0</ID>
@@ -155,11 +151,34 @@
     <CredentialPassword>LXKtbDlQjy0nuywdNt9vO9ShF6FTQrcYMJuo5hnjaB+hHv9rIJHvRL760JPvduR2Wo58kaCpieiuHIT1Vm7lQdvVWtIKeCPNN6pbF/sdqnw=</CredentialPassword>
     <CredentialUsername>root</CredentialUsername>
     <CustomImageList>{}</CustomImageList>
+    <IsSerialPortConnection>False</IsSerialPortConnection>
+    <IsTelnetConnection>False</IsTelnetConnection>
     <ParentID>fcdb6d02-208d-4aaa-ab5e-99e42c184480</ParentID>
     <URI>10.154.128.104</URI>
+  </RoyalSSHConnection>
+  <RoyalSSHConnection>
+    <ID>27dd273f-cf8a-4d81-870d-e8dc58195c34</ID>
+    <Modified>07/28/2016 17:09:10</Modified>
+    <ModifiedBy>GILLES-ROG\gille</ModifiedBy>
+    <Name>Squid</Name>
+    <Created>07/28/2016 16:37:55</Created>
+    <CreatedBy>GILLES-ROG\gille</CreatedBy>
+    <PositionNr>10</PositionNr>
+    <IsConnectionTemplate>False</IsConnectionTemplate>
+    <ParentID>fcdb6d02-208d-4aaa-ab5e-99e42c184480</ParentID>
+    <ObjectSpecialUsage />
+    <URI>10.154.128.254</URI>
+    <CredentialUsername>vagrant</CredentialUsername>
+    <CredentialId>00000000-0000-0000-0000-000000000000</CredentialId>
     <CredentialName />
-    <IsTelnetConnection>False</IsTelnetConnection>
-    <IsSerialPortConnection>False</IsSerialPortConnection>
+    <CredentialMode>2</CredentialMode>
+    <CredentialPassword>ZSsIIGY7qqsWuTxOH5e5+eHriX6QWgL97dbKGkZH/+CRUDFP5Jx+rVwgufLpBVJF2QTEQ9efptb3bJ+VRYkNnTFlUkyig02Xe4WBp8y2jPc=</CredentialPassword>
+    <CredentialKeyFile />
+    <ColorCursorColour>10</ColorCursorColour>
+    <ColorDefaultBackground>#000000</ColorDefaultBackground>
+    <ColorDefaultForeground>#BBBBBB</ColorDefaultForeground>
+    <CustomImageList>{}</CustomImageList>
+    <ConnectionType>ssh;SSH Connection</ConnectionType>
   </RoyalSSHConnection>
   <RoyalFolder>
     <ID>a440681e-6f1a-480e-823c-173050224c51</ID>
