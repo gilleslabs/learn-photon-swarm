@@ -1,0 +1,7 @@
+set "manager1=docker -H=10.154.128.101:2375"
+set "manager2=docker -H=10.154.128.102:2375"
+set "swarm1=docker -H=10.154.128.101:8888"
+set "swarm2=docker -H=10.154.128.102:8888"
+set "node1=docker -H=10.154.128.103:2375"
+set "node2=docker -H=10.154.128.104:2375"
+set "squid=docker -H=10.154.128.254:2375"
