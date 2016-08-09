@@ -38,7 +38,7 @@ Vagrant.configure(2) do |config|
 				v.memory = 2048
 			end
 		manager1.vm.network "private_network", ip: "10.154.128.101"
-		manager1.vm.provision "shell", path: "./scripts/manager1-2.sh" 
+		manager1.vm.provision "shell", path: "./scripts/manager1-3.sh" 
 		
 	end
 	
@@ -52,7 +52,7 @@ Vagrant.configure(2) do |config|
 				v.memory = 2048
 			end
 		manager2.vm.network "private_network", ip: "10.154.128.102"
-		manager2.vm.provision "shell", path: "./scripts/manager2-2.sh" 
+		manager2.vm.provision "shell", path: "./scripts/manager2-3.sh" 
 		
 	end
 
@@ -66,7 +66,7 @@ Vagrant.configure(2) do |config|
 				v.memory = 2048
 			end
 		node1.vm.network "private_network", ip: "10.154.128.103"
-		node1.vm.provision "shell", path: "./scripts/node1-2.sh" 
+		node1.vm.provision "shell", path: "./scripts/node1-3.sh" 
 		
 	end
 	
@@ -80,7 +80,7 @@ Vagrant.configure(2) do |config|
 				v.memory = 2048
 			end
 		node2.vm.network "private_network", ip: "10.154.128.104"
-		node2.vm.provision "shell", path: "./scripts/node2-2.sh" 
+		node2.vm.provision "shell", path: "./scripts/node2-3.sh" 
 		
 	end
 end

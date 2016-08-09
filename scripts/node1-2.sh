@@ -54,6 +54,6 @@ sudo systemctl enable docker
 sudo echo DOCKER_OPTS="$DOCKER_OPTS --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375" > /etc/default/docker
 systemctl daemon-reload && systemctl restart docker
 
-sudo docker run -d --restart=always --name=node1 swarm join --advertise=10.154.128.103:2375 zk://10.154.128.101,10.154.128.102/swarm
+sudo docker run -d --restart=always --name=node2 swarm join --advertise=10.154.128.103:2375 zk://10.154.128.101,10.154.128.102/swarm
 
 

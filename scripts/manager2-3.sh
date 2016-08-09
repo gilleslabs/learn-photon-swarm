@@ -39,8 +39,10 @@ sudo echo "export http_proxy=http://10.154.128.254:3128/" >> ~/.profile
 sudo echo proxy=http://10.154.128.254:3128 >> /etc/tdnf/tdnf.conf
 
 #Upgrading docker
-
-sudo tdnf install docker -y
+sudo tdnf install wget -y
+sudo wget https://get.docker.com/builds/Linux/x86_64/docker-latest.tgz
+sudo tar -xvzf docker-latest.tgz
+sudo mv docker/* /usr/bin/
 
 #Setting up proxy stuff for docker
 
