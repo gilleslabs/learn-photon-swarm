@@ -33,3 +33,4 @@ sudo ufw allow 3128/tcp
 sudo ufw allow 80/tcp
 
 sudo docker run --name squid -d --restart=always --publish 3128:3128 --volume /srv/docker/squid/cache:/var/spool/squid3 sameersbn/squid
+### docker run -d --name my-apache-app -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4

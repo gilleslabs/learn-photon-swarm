@@ -17,12 +17,18 @@ sudo sed -i -e 's/# End \/etc\/systemd\/scripts\/iptables//g' /etc/systemd/scrip
 sudo echo "# Allowing Docker remote access" >> /etc/systemd/scripts/iptables
 sudo echo iptables -t filter -A INPUT -s 10.154.128.0/24 -p tcp --dport 2375 -j ACCEPT >> /etc/systemd/scripts/iptables
 sudo echo iptables -t filter -A INPUT -s 10.154.128.0/24 -p tcp --dport 2376 -j ACCEPT >> /etc/systemd/scripts/iptables
+sudo echo iptables -t filter -A INPUT -s 10.154.128.0/24 -p tcp --dport 2377 -j ACCEPT >> /etc/systemd/scripts/iptables
+sudo echo iptables -t filter -A INPUT -s 10.154.128.0/24 -p tcp --dport 7946 -j ACCEPT >> /etc/systemd/scripts/iptables
+sudo echo iptables -t filter -A INPUT -s 10.154.128.0/24 -p tcp --dport 4789 -j ACCEPT >> /etc/systemd/scripts/iptables
+sudo echo iptables -t filter -A INPUT -s 10.154.128.0/24 -p udp --dport 7946 -j ACCEPT >> /etc/systemd/scripts/iptables
+sudo echo iptables -t filter -A INPUT -s 10.154.128.0/24 -p udp --dport 4789 -j ACCEPT >> /etc/systemd/scripts/iptables
 sudo echo "# Allowing Zookeeper" >> /etc/systemd/scripts/iptables
 sudo echo iptables -t filter -A INPUT  -p tcp --dport 2888 -j ACCEPT >> /etc/systemd/scripts/iptables
 sudo echo iptables -t filter -A INPUT  -p tcp --dport 3888 -j ACCEPT >> /etc/systemd/scripts/iptables
 sudo echo iptables -t filter -A INPUT  -p tcp --dport 2181 -j ACCEPT >> /etc/systemd/scripts/iptables
 sudo echo iptables -t filter -A INPUT -s 10.154.128.0/24 -p icmp -j ACCEPT >> /etc/systemd/scripts/iptables
 sudo echo iptables -t filter -A INPUT -s 10.154.128.0/24 -p udp --dport 53 -j ACCEPT >> /etc/systemd/scripts/iptables
+sudo echo iptables -t filter -A INPUT -s 10.154.128.0/24 -p tcp --dport 80 -j ACCEPT >> /etc/systemd/scripts/iptables
 sudo echo "# End /etc/systemd/scripts/iptables" >> /etc/systemd/scripts/iptables
 sudo systemctl restart iptables
 
@@ -40,9 +46,9 @@ sudo echo proxy=http://10.154.128.254:3128 >> /etc/tdnf/tdnf.conf
 
 #Upgrading docker
 sudo tdnf install wget -y
-sudo wget https://get.docker.com/builds/Linux/x86_64/docker-latest.tgz
-sudo tar -xvzf docker-latest.tgz
-sudo mv docker/* /usr/bin/
+sudo tdnf install tar -y
+sudo echo "Upgrading Docker" && source ~/.profile && cd ~/ && wget https://get.docker.com/builds/Linux/x86_64/docker-latest.tgz && tar -xvzf docker-latest.tgz
+sudo mv ~/docker/* /usr/bin/
 
 #Setting up proxy stuff for docker
 
@@ -55,19 +61,20 @@ Environment="HTTPS_PROXY=http://10.154.128.254:3128/"
 COW
 
 ###Remote access enable (docker)
+sudo sed -i -e 's/daemon//g' /usr/lib/systemd/system/docker.service
+sudo sed -i -e 's/\/usr\/bin\/docker/\/usr\/bin\/dockerd/g' /usr/lib/systemd/system/docker.service
+sudo sed -i -e 's/--containerd \/run\/containerd.sock//g' /usr/lib/systemd/system/docker.service
+sudo echo DOCKER_OPTS="$DOCKER_OPTS --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375" > /etc/default/docker
+sudo systemctl daemon-reload && systemctl restart docker
 sudo systemctl enable docker
 
-sudo echo DOCKER_OPTS="$DOCKER_OPTS --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375" > /etc/default/docker
-systemctl daemon-reload && systemctl restart docker
 
-
-#### Setting up zookeeper container
-
-docker run -d -e MYID=1 -e SERVERS=10.154.128.101,10.154.128.102 -v /var/lib/zookeeper:/tmp/zookeeper --name=zookeeper --net=host --restart=always mesoscloud/zookeeper:3.4.8-ubuntu-14.04
-
-sudo tdnf install netcat -y
+sudo mkdir -p /var/www/html
+sudo chmod -R 775 /var/www/html/
 
 ##### Setting up swarm
-sudo docker run -d --name=manager1 -p 8888:2375 swarm manage --replication --advertise 10.154.128.101:8888 zk://10.154.128.101,10.154.128.102/swarm
+sudo docker swarm init --advertise-addr 10.154.128.101 > /var/www/html/index.html
+sudo chmod 775 /var/www/html/index.html
+sudo docker run -d -p80:80 --name my-apache-app -v /var/www/html:/usr/local/apache2/htdocs/ httpd:2.4
 
 
